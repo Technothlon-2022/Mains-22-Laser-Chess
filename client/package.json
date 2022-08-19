@@ -1,0 +1,48 @@
+{
+  "name": "laserchess",
+  "version": "1.0.0-alpha4.1",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@reduxjs/toolkit": "^1.8.4",
+    "@turf/boolean-point-in-polygon": "^6.5.0",
+    "@turf/helpers": "^6.5.0",
+    "array-flat-polyfill": "^1.0.1",
+    "core-js": "^3.24.1",
+    "js-yaml": "^4.1.0",
+    "konva": "^8.3.11",
+    "lodash": "^4.17.21",
+    "node-sass": "^7.0.1",
+    "react": "^18.2.0",
+    "react-countup": "^6.3.0",
+    "react-dom": "^18.2.0",
+    "react-hooks": "^1.0.1",
+    "react-konva": "^18.2.1",
+    "react-redux": "^8.0.2",
+    "react-scripts": "^5.0.1",
+    "use-image": "^1.0.12",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0"
+  }
+}
