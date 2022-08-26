@@ -3,8 +3,6 @@
   "version": "1.0.0-alpha4.1",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.12.4",
-    "@material-ui/icons": "^4.11.3",
     "@reduxjs/toolkit": "^1.8.4",
     "@turf/boolean-point-in-polygon": "^6.5.0",
     "@turf/helpers": "^6.5.0",
