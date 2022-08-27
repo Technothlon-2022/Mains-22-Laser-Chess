@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PlayerTypesEnum, GameStatusEnum } from "../../models/Enums";
+import Movement from "../../models/Movement";
 import Board from "../../models/Board";
 import AI from "../../utils/ai/AI";
 
@@ -61,7 +62,7 @@ const gameSlice = createSlice({
          */
         applyMovement: (state, action) => {
             state.movementIsLocked = true;
-
+            // console.log(state, action.payload.movement.an);
             // Lock the move until finished (or laser stopped)
             const { movement } = action.payload;
             const newBoard = new Board({ squares: state.squares });
@@ -87,11 +88,12 @@ const gameSlice = createSlice({
          * Sets the serialized computed movement to state.movement
          */
         computeAIMovement: (state) => {
-            const newBoard = new Board({ squares: state.squares });
+            // const newBoard = new Board({ squares: state.squares });
 
-            // Using minimax determine the optimal move for the ai.
-            const ai = new AI();
-            const movement = ai.computeMove(newBoard, PlayerTypesEnum.RED);
+            // // Using minimax determine the optimal move for the ai.
+            // const ai = new AI();
+            // const movement = ai.computeMove(newBoard, PlayerTypesEnum.RED);
+            const movement = Movement.parse("e5d4");
             state.ai.movement = movement.serialize();
             state.movementIsLocked = true;
         },

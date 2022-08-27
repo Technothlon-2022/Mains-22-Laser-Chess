@@ -108,6 +108,18 @@ function ChessMain() {
 	}, [dispatch, aiMovement, getCellSize]);
 
 
+	// useEffect(() => {
+	// 	const movement = Movement.parse("e5d4");
+	// 	setTimeout(() => {
+	// 		Board.presentPieceMovement(stagePiecesRef, movement, getCellSize());
+
+	// 		// Apply this rotation movement on the board state
+	// 		setTimeout(() => {
+	// 			dispatch(applyMovement({ movement: movement.serialize() }));
+	// 		}, 332);
+	// 	}, 3000);
+	// }, []);
+
 	// Renderers
 	return (
 		<div>
