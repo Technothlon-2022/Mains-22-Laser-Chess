@@ -5,6 +5,9 @@ const { MongoClient } = require('mongodb');
 const mongoSanitize = require("express-mongo-sanitize");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
+const {requireAuth}=require("./middlewares/userAuth.js");
+const {MongoClient}=require("mongodb");
+
 
 const corsHandle = require("./middlewares/corsHandle.js");
 const userRoutes = require("./routes/userRoutes.js");
@@ -25,7 +28,7 @@ const io = require('socket.io')(server, {
 const MONGO_URI =
 	process.env.MONGO_URI ||
 	"mongodb+srv://technoUser:YLKHH2jNdicMSrJB@cluster3.3ahhuxr.mongodb.net/Techno_Database";
-
+	const client=new MongoClient(MONGO_URI);
 app.use(corsHandle);
 app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: false }));
@@ -38,15 +41,18 @@ mongoose
 	.then(() => console.log("Successful DB connection"))
 	.catch((err) => console.error("DB connection failed"));
 
+app.get(__dirname+"views/home.html",requireAuth,(req,res)=>res.render("success"));
+
 app.use("/api/user", userRoutes);
+
 
 //******************Database connection***************//
 
 
-const uri = "mongodb+srv://technoUser:YLKHH2jNdicMSrJB@cluster3.3ahhuxr.mongodb.net/Techno_Database";
+// const uri = "mongodb+srv://technoUser:YLKHH2jNdicMSrJB@cluster3.3ahhuxr.mongodb.net/Techno_Database";
 // const { roll } = require('ejs');
  const users = {};
-const client = new MongoClient(uri);
+// const client = new MongoClient(uri);
 
 io.on("connection",(socket)=>{
     socket.on('new-user-joined',roll =>{
@@ -71,6 +77,6 @@ async function updateListingBySelect(client, selectName, updatedListing) {
 
 //*******End of Database part ***********//
 
-server.listen(PORT, console.log("server started at port: " + PORT));
+app.listen(PORT, console.log("server started at port: " + PORT));
 
 module.exports = app;
