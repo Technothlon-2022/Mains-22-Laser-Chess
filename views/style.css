@@ -1,0 +1,125 @@
+.testing{
+z-index: 1;
+height: 100%;
+width: 50%;
+display: flex;
+font-size: 25px;
+align-items: center;
+border-radius: 10px;
+
+justify-content: center;
+
+
+}
+.margin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0;  
+    width: 100%;
+    height: 18vh;
+}
+body{
+    background-image: url('31.jpg');
+  font-family: sans-serif ;
+   
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+   background-size: auto;
+     
+}
+.body{
+    width: 100%;
+    height: 81%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0;
+
+
+}
+.margin5{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.border2{
+    /* background-image: linear-gradient(to bottom right, rgb(2, 2, 2,1), rgba(13, 13, 138, 0.8)); */
+    background-image: linear-gradient(to bottom right,  rgba(185, 48, 20, 0.7), rgba(13, 13, 138, 0.7));
+    height: auto;
+    width: 30%;
+    box-shadow: 0 0px 8px 0 rgba(115, 10, 10, 0.5), 0 6px 20px 0 rgba(8, 8, 8, 1);
+    text-align: center;
+    /* min-width: 700px; */
+}
+.image{
+    height: 80%;
+margin-top: 30px;
+}
+form{
+    width: 100%;
+}
+label{
+    width: 100%;
+height: 60px; 
+font-size: 40px;
+font-family: sans-serif;
+ 
+}
+.font{
+    font-size: 80px;
+    color: #ffefe2;
+ 
+}
+.font1{
+    font-size: 55px;
+    color: #ffefe2;
+}
+input{
+    height: 40px; 
+    width: 70%;
+font-size: 20px;
+border-radius: 10px;
+margin-top: 10px; 
+margin-bottom: 10px; 
+
+}
+
+.button{
+    width: 50%;
+    height: 60px;
+    background-color:rgb(9, 9, 216);
+  color: white;
+  border: none;
+  font-size: 40px;
+  margin-top: 5%;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+.typed {
+    overflow: hidden; 
+    border-right: .15em solid orange;  
+    white-space: nowrap; 
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: 
+      typing 4s steps(40, end),
+      blink-caret .5s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0% }
+    to { width: 100% }
+  }
+  
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    100% { border-color: #ffefe2; }
+  }
+  
