@@ -1,23 +1,16 @@
-const jwt=require('jsonwebtoken');
-const requireAuth=async(req,res,next)=>{
-    const token=req.cookie.jwt;
-    if(token)
-    {
-        jwt.verify(token,'secret',(err,decodedToken)=>{
-            if(err){
-                console.log(err.message);
-                res.redirect("/login");
-            }
-            else{
-                console.log(decodedToken);
-                next();
-            }
+const jwt = require("jsonwebtoken");
 
-        })
-    }
-    else{
-        res.redirect("/login");
-    }
-}
+const requireAuth = async (req, res, next) => {
+	try {
+		const token = req.cookies.jwt;
+		if (!token) throw new Error("Please Login");
+		const decodedToken = jwt.verify(token, "secret");
+		res.locals.user = { ...decodedToken };
+		next();
+	} catch (err) {
+		console.error(err);
+		res.status(400).json({ access: false, msg: err.message });
+	}
+};
 
-module.exports={requireAuth};
+module.exports = { requireAuth };

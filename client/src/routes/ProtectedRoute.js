@@ -1,29 +1,33 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useLocation, Navigate, Outlet } from "react-router-dom";
+import { joinRoom } from "../hooks/rooms/socket";
 
 const ProtectedRoute = () => {
-    const location = useLocation();
+	const location = useLocation();
 	const [user, setUser] = useState();
 	const [redirectPath, setRedirectPath] = useState();
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:3080/api/user/authorize/", {
+			.get("http://localhost:5050/api/user/authorize/", {
 				withCredentials: true,
 			})
-			.then((res) => {
-                res.data.access 
-				if (location.pathname === "/login3" && res.data.fac === 1) {
-					setRedirectPath("/login1");
-				} else {
-					setUser(res.data.user);
-				}
-			})
-			.catch((err) => setRedirectPath("/login1"));
+			.then((res) => setUser(res.data))
+			.catch((err) => setRedirectPath("/login"));
 	}, []);
+
+	useEffect(() => {
+		if (user) {
+			localStorage.setItem("roll", user && user.roll);
+			localStorage.setItem("room", user && user.room);
+			console.log("hi");
+			// joinRoom(user.roll);
+		}
+	}, [user]);
 
 	if (user) return <Outlet context={{ user }} />;
 	if (redirectPath) return <Navigate to={redirectPath} replace />;
-}
- 
+};
+
 export default ProtectedRoute;

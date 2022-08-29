@@ -14,13 +14,15 @@ const UserLogin = () => {
 		try {
 			setError("");
 			setLoading(true);
-			const formData = new FormData();
-			formData.append("roll", rollRef.current.value);
-			formData.append("pwd", pwdRef.current.value);
-			const res = await axios.post("http://localhost:3030/api/user/login", formData, {
-				withCredentials: true,
-			});
-			localStorage.setItem("roll", rollRef.current.value);
+			const res = await axios.post(
+				"http://localhost:5050/api/user/login", 
+				{
+					"roll": rollRef.current.value,
+					"pwd": pwdRef.current.value
+				}, 
+				{
+					withCredentials: true,
+				});
 			console.log(res.data.msg);
 			navigate("/instructions");
 			setLoading(false);
