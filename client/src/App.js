@@ -1,13 +1,15 @@
-import { BrowserRouter, Rourtes, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 import ChessMain from "./ChessMain";
-import TestFormSubmit from "./components/TestFormSubmit";
+import UserLogin from "./routes/UserLogin";
+import UserInstructions from "./routes/UserInstructions";
 
 const App = () => {
 	return ( 
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<TestFormSubmit />} />
+				<Route path="/" element={<UserLogin />} />
+				<Route path="/instructions" element={<UserInstructions />} />
 				<Route path="/play" element={<ChessMain />} />
 			</Routes>
 		</BrowserRouter>

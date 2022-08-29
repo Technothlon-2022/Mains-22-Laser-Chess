@@ -307,10 +307,10 @@ function ChessMain() {
 			</div>
 
 
-			<div className="container mt-5 p-3 text-muted">
+			{/* <div className="container mt-5 p-3 text-muted">
 				<hr />
 				<a href="https://github.com/kishannareshpal/laserchess"><img alt="GitHub release" src="https://img.shields.io/github/v/release/kishannareshpal/laserchess?include_prereleases&label=laserchess&style=flat-square"></img></a> • <a className="text-muted" href="https://kishanjadav.com">Kishan Jadav</a>
-			</div>
+			</div> */}
 		</div >
 	);
 }

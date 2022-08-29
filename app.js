@@ -18,9 +18,9 @@ const io = require('socket.io')(server, {
       origin: '*',
     }
   });
-server.listen(PORT,()=>{
-    console.log('Server is running ...');
-});
+// server.listen(PORT,()=>{
+//     console.log('Server is running ...');
+// });
 
 const MONGO_URI =
 	process.env.MONGO_URI ||
@@ -44,7 +44,7 @@ app.use("/api/user", userRoutes);
 
 
 const uri = "mongodb+srv://technoUser:YLKHH2jNdicMSrJB@cluster3.3ahhuxr.mongodb.net/Techno_Database";
-const { roll } = require('ejs');
+// const { roll } = require('ejs');
  const users = {};
 const client = new MongoClient(uri);
 
@@ -71,6 +71,6 @@ async function updateListingBySelect(client, selectName, updatedListing) {
 
 //*******End of Database part ***********//
 
-// app.listen(PORT, console.log("server started at port: " + PORT));
+server.listen(PORT, console.log("server started at port: " + PORT));
 
 module.exports = app;
