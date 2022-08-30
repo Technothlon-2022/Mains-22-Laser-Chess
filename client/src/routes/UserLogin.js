@@ -36,9 +36,14 @@ const UserLogin = () => {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<b>{error && "Error: " + error}</b>
-				<input type="text" id="roll" name="roll" placeholder="roll no" ref={rollRef} required />
+				{/* <input type="text" id="roll" name="roll" placeholder="roll no" ref={rollRef} required />
 				<input type="text" id="pwd" name="pwd" placeholder="password" ref={pwdRef} required />
-				<input type="submit" value="Submit" disabled={loading} />
+				<input type="submit" value="Submit" disabled={loading} /> */}
+				<label for="roll">USERNAME</label><br />
+                    <input type="text" id="roll" name="roll" placeholder="roll no" ref={rollRef} required /><br />
+                    <label for="pwd">PASSWORD</label><br />
+                    <input type="text" id="pwd" name="pwd" placeholder="password" ref={pwdRef} required /><br />
+                    <input type="submit" class="button" value="Submit" disabled={Submit} />
 			</form>
 		</div>
 	);
