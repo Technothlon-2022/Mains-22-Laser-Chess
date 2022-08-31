@@ -42,19 +42,51 @@
     </nav>
       <input type="text" class="message">
       <button class="btn" type="submit" onclick="sendMessage()">Send Message</button>
+
+      <input type="text" class="message score">
+      <button class="btn" type="submit" onclick="sendScore()">Send Score</button>
+
+      <input type="text" class="message board">
+      <button class="btn" type="submit" onclick="sendBoard()">Send Board</button>
+
+      <input type="text" class="message move">
+      <button class="btn" type="submit" onclick="sendMove()">Send Move</button>
       <h2></h2>
+      <h3></h3>
     <script>
         const socket= io("http://localhost:5050");
         socket.on('connection')
         const roll= prompt('Enter Your Roll no. to join');
         socket.emit('new-user-joined',roll);
+        socket.emit('user-joined',roll);
         socket.on('message',(data)=>{
             document.querySelector('h2').innerHTML=data
+        })
+        socket.on('move',(data)=>{
+            document.querySelector('h3').innerHTML=data
         })
         const sendMessage=()=>{
             const messageInput=document.querySelector('.message')
             const message=messageInput.value
             socket.emit('message',message)
+            messageInput.value=''
+        }
+        const sendScore=()=>{
+            const messageInput=document.querySelector('.score')
+            const score=messageInput.value
+            socket.emit('score',score)
+            messageInput.value=''
+        }
+        const sendBoard=()=>{
+            const messageInput=document.querySelector('.board')
+            const board=messageInput.value
+            socket.emit('board',board)
+            messageInput.value=''
+        }
+        const sendMove=()=>{
+            const messageInput=document.querySelector('.move')
+            const move=messageInput.value
+            socket.emit('move',move)
             messageInput.value=''
         }
     </script>
