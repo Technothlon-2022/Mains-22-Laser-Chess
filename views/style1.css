@@ -1,0 +1,117 @@
+body{
+    background-image: url(211.png);
+    background-color: #ffefe2;
+background-position-y: -5px;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    color: black;
+   background-attachment: scroll;
+   background-size: cover;
+  font-family: sans-serif ;
+     line-height: 35px;
+     font-size: 50px;
+}
+p{
+    margin: 10px;
+}
+.padding200{
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
+
+.margin200{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0;  
+    width: 100%;
+    height: 18vh;
+  
+}
+.margin1200{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0;  
+    width: 90%;
+    flex-direction:column ;
+
+  
+}
+.div200{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+.font200{
+    font-size: 80px;
+    color:rgb(21, 19, 19);
+    font-size: 72px;
+    color:#ffefe2;
+	-webkit-text-stroke: 3px rgb(84, 4, 4);
+}
+.font1200{
+    font-size: 40px;
+    color: black;
+   
+    
+}
+.typed200 {
+    overflow: hidden; 
+    border-right: .15em solid orange;  
+    white-space: nowrap; 
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: 
+      typing 4s steps(40, end),
+      blink-caret .5s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0% }
+    to { width: 100% }
+  }
+  
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    100% { border-color: #ffefe2; }
+  }
+  .border2200{
+    /* background-image: linear-gradient(to bottom right,  rgba(13, 13, 138, 0.5), rgb(164, 17, 17)); */
+    background-color: #ecd1bc;
+    opacity: 0.7;
+   border-radius: 10px;
+    box-shadow: 0 0px 8px 0 rgba(115, 10, 10, 0.5), 0 6px 20px 0 rgba(8, 8, 8, 0.4);
+    width: 80%;
+}
+.margin3200{
+    margin-top: 40px;
+    font-size: 50px;
+}
+.button200{
+   
+
+    width: 150%;
+
+    height: 70px;
+    background-color:rgb(9, 9, 216);
+  color: white;
+  border: none;
+  font-size: 40px;
+  margin-top: 5%;
+  margin-bottom: 40px;
+  cursor: pointer;
+  border-radius: 7px;
+
+
+ justify-content: center;
+
+}
