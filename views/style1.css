@@ -10,13 +10,18 @@ background-position-y: -5px;
    background-attachment: scroll;
    background-size: cover;
   font-family: sans-serif ;
-     line-height: 60px;
+     line-height: 35px;
+     font-size: 50px;
+}
+p{
+    margin: 10px;
 }
 .padding{
     padding-left: 50px;
     padding-right: 50px;
     
 }
+
 .margin{
     display: flex;
     justify-content: center;
@@ -90,4 +95,23 @@ background-position-y: -5px;
 .margin3{
     margin-top: 40px;
     font-size: 50px;
+}
+.button{
+   
+
+    width: 150%;
+
+    height: 70px;
+    background-color:rgb(9, 9, 216);
+  color: white;
+  border: none;
+  font-size: 40px;
+  margin-top: 5%;
+  margin-bottom: 40px;
+  cursor: pointer;
+  border-radius: 7px;
+
+
+ justify-content: center;
+
 }
