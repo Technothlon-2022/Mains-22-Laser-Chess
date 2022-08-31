@@ -16,13 +16,13 @@ background-position-y: -5px;
 p{
     margin: 10px;
 }
-.padding{
+.padding200{
     padding-left: 50px;
     padding-right: 50px;
     
 }
 
-.margin{
+.margin200{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@ p{
     height: 18vh;
   
 }
-.margin1{
+.margin1200{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,27 +43,27 @@ p{
 
   
 }
-.div{
+.div200{
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     flex-direction: column;
 }
-.font{
+.font200{
     font-size: 80px;
     color:rgb(21, 19, 19);
     font-size: 72px;
     color:#ffefe2;
 	-webkit-text-stroke: 3px rgb(84, 4, 4);
 }
-.font1{
+.font1200{
     font-size: 40px;
     color: black;
    
     
 }
-.typed {
+.typed200 {
     overflow: hidden; 
     border-right: .15em solid orange;  
     white-space: nowrap; 
@@ -84,7 +84,7 @@ p{
     from, to { border-color: transparent }
     100% { border-color: #ffefe2; }
   }
-  .border2{
+  .border2200{
     /* background-image: linear-gradient(to bottom right,  rgba(13, 13, 138, 0.5), rgb(164, 17, 17)); */
     background-color: #ecd1bc;
     opacity: 0.7;
@@ -92,11 +92,11 @@ p{
     box-shadow: 0 0px 8px 0 rgba(115, 10, 10, 0.5), 0 6px 20px 0 rgba(8, 8, 8, 0.4);
     width: 80%;
 }
-.margin3{
+.margin3200{
     margin-top: 40px;
     font-size: 50px;
 }
-.button{
+.button200{
    
 
     width: 150%;
