@@ -77,6 +77,7 @@ label{
     max-height:50px; 
 font-size: 100%;
 font-family: sans-serif;
+margin-bottom: 5px;
  
 }
 .font4{
@@ -85,38 +86,47 @@ font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     color: #ffefe2;
 
 }
 .font1{
     height: 15%;
-    font-size: 4vh;
+    font-size: 5.3vh;
 
     color: #ffefe2;
 }
 input{
     height: 3vh;
-    max-height:50px;
-    max-width:150px;
-    width: 60%;
+    min-height: 30px;
+    max-height:40px;
+    max-width:230px;
+    width: 90%;
 font-size: 60%;
-border-radius: 10px;
-margin-top: 20px; 
+border-radius: 5px;
+margin-top: 5px; 
 margin-bottom: 20px; 
 
 }
 
 .button{
-    width: 50%;
-    height: 10%;
-    max-height: 60px;
+   
+
+    width: 40%;
+    height: 18%;
+    max-height: 70px;
     background-color:rgb(9, 9, 216);
   color: white;
   border: none;
-  font-size: 40px;
+  font-size: 35px;
   margin-top: 5%;
   margin-bottom: 40px;
   cursor: pointer;
+  border-radius: 7px;
+
+
+ justify-content: center;
+
 }
 .typed {
     overflow: hidden; 
