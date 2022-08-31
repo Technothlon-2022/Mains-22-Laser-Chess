@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
 	},
 	room: {
 		type: String,
+    required: true,
 	},
 	color: {
 		type: String,
@@ -28,6 +29,10 @@ const userSchema = new mongoose.Schema({
 	createdAt: {
 		type: Date,
 		default: Date.now,
+	},
+  move: [{type: String}],
+  message: {
+		type: String,
 	},
 });
 
