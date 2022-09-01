@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const { requireAuth } = require("./middlewares/userAuth.js");
 
+const { User } = require("./models/userModel.js");
 const corsHandle = require("./middlewares/corsHandle.js");
 const userRoutes = require("./routes/userRoutes.js");
 
@@ -84,6 +85,8 @@ async function updateListingByRoll(client, rollno, updatedListing) {
 }
 
 async function findOneListingByRoll(client, roll) {
+	try {
+			console.log(roll);
     const result = await client.db("Techno_Database").collection("users").findOne({ roll: roll })
     const response=result.room
     // console.log(response);
@@ -94,7 +97,9 @@ async function findOneListingByRoll(client, roll) {
         console.log(`No listings found with the roll '${roll}'`);
     }
     return response
-    
+	} catch (err) {
+		console.error(err);
+	}
 }
 
 //*******End of Database part ***********//
