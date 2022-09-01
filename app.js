@@ -64,6 +64,10 @@ io.on("connection", (socket) => {
 			console.log(data);
 			updateListingByRoom(room, { board: data });
 		});
+		socket.on("winner", (data) => {
+			console.log(data);
+			updateListingByRoll(users[socket.id], { winner: data });
+		});
 	});
 });
 

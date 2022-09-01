@@ -3,7 +3,7 @@ import { PlayerTypesEnum, GameStatusEnum } from "../../models/Enums";
 import Movement from "../../models/Movement";
 import Board from "../../models/Board";
 import AI from "../../utils/ai/AI";
-import { sendMove } from "../../hooks/rooms/useSocket"; 
+import { sendBoard, sendMove, sendScore } from "../../hooks/rooms/useSocket"; 
 
 /** 
  * The default board setup (ACE).
@@ -84,6 +84,8 @@ const gameSlice = createSlice({
             
             if (state.currentPlayer == localStorage.getItem("color")) {
                 sendMove(action.payload.movement.an);
+                sendBoard(newBoard.toSN());
+                sendScore(newBoard.getPlayerScore(localStorage.getItem("color")));
             }
         },
 
@@ -221,6 +223,8 @@ export const {
     showOpponentMovement,
     disablePlayerMove,
     enablePlayerMove,
+    getScore,
+    getBoard,
     toggleAI,
     selectPiece,
     unselectPiece,

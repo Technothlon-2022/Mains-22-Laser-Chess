@@ -51,8 +51,12 @@
 
       <input type="text" class="message move">
       <button class="btn" type="submit" onclick="sendMove()">Send Move</button>
+
+      <input type="text" class="message winner">
+      <button class="btn" type="submit" onclick="sendWinner()">Send Winner</button>
       <h2></h2>
       <h3></h3>
+      <div></div>
     <script>
         const socket= io("http://localhost:5050");
         socket.on('connection')
@@ -64,6 +68,9 @@
         })
         socket.on('move',(data)=>{
             document.querySelector('h3').innerHTML=data
+        })
+        socket.on('user-joined',roll=>{
+            document.querySelector('div').innerHTML=`${roll} joined the room`
         })
         const sendMessage=()=>{
             const messageInput=document.querySelector('.message')
@@ -87,6 +94,12 @@
             const messageInput=document.querySelector('.move')
             const move=messageInput.value
             socket.emit('move',move)
+            messageInput.value=''
+        }
+        const sendWinner=()=>{
+            const messageInput=document.querySelector('.winner')
+            const winner=messageInput.value
+            socket.emit('winner',winner)
             messageInput.value=''
         }
     </script>
