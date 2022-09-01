@@ -18,7 +18,7 @@ const UserLogin = () => {
 			setError("");
 			setLoading(true);
 			const res = await axios.post(
-				"http://localhost:5050/api/user/login", 
+				"https://laserchess.techniche.org.in/api/user/login", 
 				{
 					"roll": rollRef.current.value,
 					"pwd": pwdRef.current.value

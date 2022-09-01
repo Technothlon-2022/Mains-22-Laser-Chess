@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:5050");
+const socket = io("https://laserchess.techniche.org.in");
 
 const useSocket = ({ userDetails }) => {
 	const [incomingMsg, setIncomingMsg] = useState("");

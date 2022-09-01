@@ -8,7 +8,7 @@ const ProtectedRoute = () => {
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:5050/api/user/authorize/", {
+			.get("https://laserchess.techniche.org.in/api/user/authorize/", {
 				withCredentials: true,
 			})
 			.then((res) => setUserDetails(res.data))

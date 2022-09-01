@@ -54,7 +54,7 @@
       <h2></h2>
       <h3></h3>
     <script>
-        const socket= io("http://localhost:5050");
+        const socket= io("https://laserchess.techniche.org.in");
         socket.on('connection')
         const roll= prompt('Enter Your Roll no. to join');
         socket.emit('new-user-joined',roll);
