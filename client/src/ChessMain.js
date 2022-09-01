@@ -7,17 +7,23 @@ import LogoPNG from "./assets/logo.png";
 import BluePlayerProfile from "./assets/ui/blue-player-profile.png";
 import RedPlayerProfile from "./assets/ui/red-player-profile.png";
 import { Provider, ReactReduxContext, useDispatch, useSelector } from "react-redux";
-import { setBoardType, applyMovement, computeAIMovement, toggleAI, finishMovement, unselectPiece } from "./redux/slices/gameSlice";
+import { setBoardType, applyMovement, computeAIMovement, disablePlayerMove, enablePlayerMove, showOpponentMovement, toggleAI, finishMovement, unselectPiece } from "./redux/slices/gameSlice";
 import { MovementTypesEnum, PlayerTypesEnum } from "./models/Enums";
 import Board from "./models/Board";
 import { IconButton } from "@material-ui/core";
 import RotateLeftIcon from "@material-ui/icons/RotateLeft";
 import RotateRightIcon from "@material-ui/icons/RotateRight";
 import Movement from "./models/Movement";
+import useSocket from "./hooks/rooms/useSocket";
+import { useOutletContext } from "react-router-dom";
 
 
 
 function ChessMain() {
+
+	// Get user corresponding details
+	const userDetails = useOutletContext();
+	const [incomingMsg, setOutgoingMsg] = useSocket(userDetails);
 
 	// The stage width. This is dynamic, and changes on window resize.
 	const [stageWidth, setStageWidth] = useState(700);
@@ -94,6 +100,20 @@ function ChessMain() {
 			dispatch(computeAIMovement());
 		}
 	}, [currentPlayer, aiEnabled, dispatch]);
+
+	useEffect(() => {
+		if (currentPlayer != localStorage.getItem("color") && incomingMsg && !aiEnabled) {
+			dispatch(showOpponentMovement(incomingMsg));
+		}
+	}, [incomingMsg, aiEnabled, dispatch]);
+
+	useEffect(() => {
+		if (currentPlayer != localStorage.getItem("color")) {
+			dispatch(disablePlayerMove());
+		} else {
+			dispatch(enablePlayerMove());
+		}
+	}, [currentPlayer])
 
 	useEffect(() => {
 		if (aiMovement) {

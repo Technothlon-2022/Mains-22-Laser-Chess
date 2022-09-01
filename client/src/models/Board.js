@@ -16,7 +16,7 @@ import { pieceAnimDuration, pieceAnimEasing } from "../components/BoardPiece";
  * @constant
  * Ace
  */
-const DEFAULT_BOARD_SN = "l++3d++kd++b+++2/2b7/3B+6/b++1B1ss+1b+++1B+/b+++1B+1S+S1b++1B/6b+++3/7B++2/2B+DKD3L";
+const DEFAULT_BOARD_SN = localStorage.getItem("board") || "l++3d++kd++b+++2/2b7/3B+6/b++1B1ss+1b+++1B+/b+++1B+1S+S1b++1B/6b+++3/7B++2/2B+DKD3L";
 
 /**
  * @constant

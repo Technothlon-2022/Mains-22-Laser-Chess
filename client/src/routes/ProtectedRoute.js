@@ -1,11 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { joinRoom } from "../hooks/rooms/socket";
+import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoute = () => {
-	const location = useLocation();
-	const [user, setUser] = useState();
+	const [userDetails, setUserDetails] = useState();
 	const [redirectPath, setRedirectPath] = useState();
 
 	useEffect(() => {
@@ -13,20 +11,21 @@ const ProtectedRoute = () => {
 			.get("http://localhost:5050/api/user/authorize/", {
 				withCredentials: true,
 			})
-			.then((res) => setUser(res.data))
+			.then((res) => setUserDetails(res.data))
 			.catch((err) => setRedirectPath("/login"));
 	}, []);
 
 	useEffect(() => {
-		if (user) {
-			localStorage.setItem("roll", user && user.roll);
-			localStorage.setItem("room", user && user.room);
-			console.log("hi");
-			// joinRoom(user.roll);
+		if (userDetails) {
+			localStorage.setItem("roll", userDetails.roll);
+			localStorage.setItem("room", userDetails.room);
+			localStorage.setItem("color", userDetails.color);
+			localStorage.setItem("score", userDetails.score);
+			localStorage.setItem("board", userDetails.board);
 		}
-	}, [user]);
+	}, [userDetails]);
 
-	if (user) return <Outlet context={{ user }} />;
+	if (userDetails) return <Outlet context={{ userDetails }} />;
 	if (redirectPath) return <Navigate to={redirectPath} replace />;
 };
 

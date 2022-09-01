@@ -69,7 +69,7 @@ const UserLogin = () => {
 								<br />
 								<input className="login-input100" type="password" name="pwd" id="pwd" ref={pwdRef} required />
 								<br />
-								<input type="submit" className="button100" defaultValue="Login" disabled={loading} />
+								<input type="submit" className="button100" value="Login" disabled={loading} />
 							</form>
 						</div>
 					</div>

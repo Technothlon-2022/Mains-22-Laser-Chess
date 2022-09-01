@@ -3,6 +3,7 @@ import { PlayerTypesEnum, GameStatusEnum } from "../../models/Enums";
 import Movement from "../../models/Movement";
 import Board from "../../models/Board";
 import AI from "../../utils/ai/AI";
+import { sendMove } from "../../hooks/rooms/useSocket"; 
 
 /** 
  * The default board setup (ACE).
@@ -11,7 +12,7 @@ import AI from "../../utils/ai/AI";
  * @constant {string}
  * @default
  */
-const DEFAULT_BOARD_SN = "l++3d++kd++b+++2/2b7/3B+6/b++1B1ss+1b+++1B+/b+++1B+1S+S1b++1B/6b+++3/7B++2/2B+DKD3L";
+const DEFAULT_BOARD_SN = localStorage.getItem("board") || "l++3d++kd++b+++2/2b7/3B+6/b++1B1ss+1b+++1B+/b+++1B+1S+S1b++1B/6b+++3/7B++2/2B+DKD3L";
 
 
 const gameSlice = createSlice({
@@ -27,7 +28,7 @@ const gameSlice = createSlice({
         movementIsLocked: false, // when true, no player can move any piece. Usually becomes true when the laser is triggered and changing to another piece
 
         ai: {
-            enabled: true, // is ai mode enabled?
+            enabled: false, // is ai mode enabled?
             movement: null // the ai movement to be made
         },
 
@@ -62,23 +63,27 @@ const gameSlice = createSlice({
          */
         applyMovement: (state, action) => {
             state.movementIsLocked = true;
-            // console.log(state, action.payload.movement.an);
+
             // Lock the move until finished (or laser stopped)
             const { movement } = action.payload;
             const newBoard = new Board({ squares: state.squares });
-
+            
             newBoard.applyMovement(movement);
             const route = newBoard.getLaserRoute(state.currentPlayer);
-
+            
             state.laser.triggered = true;
             state.laser.route = route;
-
+            
             const lastLaserRoutePath = route[route.length - 1];
             state.laser.finalActionType = lastLaserRoutePath.actionType;
             state.laser.finalLocation = lastLaserRoutePath.location;
-
+            
             if (state.ai.movement) {
                 state.ai.movement = null; // resets the ai movement
+            }
+            
+            if (state.currentPlayer == localStorage.getItem("color")) {
+                sendMove(action.payload.movement.an);
             }
         },
 
@@ -88,14 +93,32 @@ const gameSlice = createSlice({
          * Sets the serialized computed movement to state.movement
          */
         computeAIMovement: (state) => {
-            // const newBoard = new Board({ squares: state.squares });
+            const newBoard = new Board({ squares: state.squares });
 
-            // // Using minimax determine the optimal move for the ai.
-            // const ai = new AI();
-            // const movement = ai.computeMove(newBoard, PlayerTypesEnum.RED);
-            const movement = Movement.parse("e5d4");
+            // Using minimax determine the optimal move for the ai.
+            const ai = new AI();
+            const movement = ai.computeMove(newBoard, PlayerTypesEnum.BLUE);
             state.ai.movement = movement.serialize();
             state.movementIsLocked = true;
+        },
+
+
+        showOpponentMovement: (state, move) => {
+            const movement = Movement.parse(move.payload);
+            if (movement.isPossible) {
+                state.ai.movement = movement.serialize();
+                state.movementIsLocked = true;
+            }
+        },
+
+
+        disablePlayerMove: (state) => {
+            state.movementIsLocked = true;
+        },
+
+
+        enablePlayerMove: (state) => {
+            state.movementIsLocked = false;
         },
 
 
@@ -195,6 +218,9 @@ export const {
     setBoardType,
     applyMovement,
     computeAIMovement,
+    showOpponentMovement,
+    disablePlayerMove,
+    enablePlayerMove,
     toggleAI,
     selectPiece,
     unselectPiece,
