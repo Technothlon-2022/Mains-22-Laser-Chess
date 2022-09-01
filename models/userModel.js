@@ -12,15 +12,13 @@ const userSchema = new mongoose.Schema({
 	},
 	room: {
 		type: String,
-    required: true,
+		required: true,
 	},
 	color: {
 		type: String,
-		default: "blue",
 	},
 	score: {
 		type: Number,
-		default: 0
 	},
 	board: {
 		type: String,
@@ -30,8 +28,8 @@ const userSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now,
 	},
-  move: [{type: String}],
-  message: {
+	move: [{ type: String }],
+	message: {
 		type: String,
 	},
 });
