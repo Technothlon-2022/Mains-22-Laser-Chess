@@ -22,15 +22,17 @@ const userSchema = new mongoose.Schema({
 	},
 	board: {
 		type: String,
-		default: "l++3d++kd++b+++2/2b7/3B+6/b++1B1ss+1b+++1B+/b+++1B+1S+S1b++1B/6b+++3/7B++2/2B+DKD3L",
-	},
-	createdAt: {
-		type: Date,
-		default: Date.now,
 	},
 	move: [{ type: String }],
 	message: {
 		type: String,
+	},
+	winner: {
+		type: Number,
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now,
 	},
 });
 

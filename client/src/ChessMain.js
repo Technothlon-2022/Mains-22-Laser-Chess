@@ -7,23 +7,22 @@ import LogoPNG from "./assets/logo.png";
 import BluePlayerProfile from "./assets/ui/blue-player-profile.png";
 import RedPlayerProfile from "./assets/ui/red-player-profile.png";
 import { Provider, ReactReduxContext, useDispatch, useSelector } from "react-redux";
-import { setBoardType, applyMovement, computeAIMovement, disablePlayerMove, enablePlayerMove, showOpponentMovement, toggleAI, finishMovement, unselectPiece } from "./redux/slices/gameSlice";
+import { setBoardType, applyMovement, computeAIMovement, disablePlayerMove, getScore, getBoard, enablePlayerMove, showOpponentMovement, toggleAI, finishMovement, unselectPiece } from "./redux/slices/gameSlice";
 import { MovementTypesEnum, PlayerTypesEnum } from "./models/Enums";
 import Board from "./models/Board";
 import { IconButton } from "@material-ui/core";
 import RotateLeftIcon from "@material-ui/icons/RotateLeft";
 import RotateRightIcon from "@material-ui/icons/RotateRight";
 import Movement from "./models/Movement";
-import useSocket from "./hooks/rooms/useSocket";
+import useSocket, { sendScore, sendwinner } from "./hooks/rooms/useSocket";
 import { useOutletContext } from "react-router-dom";
-
 
 
 function ChessMain() {
 
 	// Get user corresponding details
 	const userDetails = useOutletContext();
-	const [incomingMsg, setOutgoingMsg] = useSocket(userDetails);
+	const [isPlayerJoined, incomingMsg, setOutgoingMsg] = useSocket(userDetails);
 
 	// The stage width. This is dynamic, and changes on window resize.
 	const [stageWidth, setStageWidth] = useState(700);
@@ -127,6 +126,13 @@ function ChessMain() {
 		}
 	}, [dispatch, aiMovement, getCellSize]);
 
+	useEffect(() => {
+		if (winner == localStorage.getItem("color")) {
+			sendwinner(1);
+		} else {
+			sendwinner(0);
+		}
+	}, [winner])
 
 	// useEffect(() => {
 	// 	const movement = Movement.parse("e5d4");
@@ -148,10 +154,17 @@ function ChessMain() {
 					<a className="navbar-brand" href="#">
 						<img src={LogoPNG} alt="laser-chess.com logo" height="52" />
 					</a>
+					<div>
+						<b>{localStorage.getItem("roll")}<br />
+						You: {localStorage.getItem("color")}</b>
+					</div>
 				</div>
 			</nav>
 
 			<div className="container section mt-4">
+				{isPlayerJoined || <div style={{width: "100vw", height: "100vh", position:"absolute", background: "rgba(255,255,255,0.8)", left: 0, top:0, zIndex: 1, textAlign: "center", fontSize: "80px"}}>
+					Please wait..., until player joins...
+				</div>}
 
 				{winner && <h4>🎉 {winner.toUpperCase()} player wins!</h4>}
 
@@ -167,14 +180,14 @@ function ChessMain() {
 										<div className="row align-items-center justify-content-between gx-4">
 											<div className="col-auto">
 												<h4 className="m-0">
-													Red Player
+													Red Player {localStorage.getItem("color") == "red" && " (You)"}
 												</h4>
 											</div>
 											<div className="col">
-												<div hidden={(currentPlayer !== PlayerTypesEnum.RED) || (aiEnabled)} className="badge rounded-pill bg-dark text-light">Your turn</div>
+												<div hidden={(currentPlayer !== PlayerTypesEnum.RED) || (aiEnabled)} className="badge rounded-pill bg-dark text-light">player's turn</div>
 											</div>
 											<div className="col-auto">
-												<div className="form-check form-switch m-0">
+												<div style={{visibility: "hidden"}} className="form-check form-switch m-0">
 													<label className="form-check-label fw-bold" htmlFor="aiModeSwitch">AI Mode {aiEnabled}</label>
 													<input checked={aiEnabled}
 														onChange={(e) => {
@@ -261,11 +274,11 @@ function ChessMain() {
 										<div className="row align-items-center gx-4">
 											<div className="col-auto">
 												<h4 className="m-0">
-													Blue Player
+													Blue Player {localStorage.getItem("color") == "blue" && " (You)"}
 												</h4>
 											</div>
 											<div className="col">
-												<div hidden={currentPlayer !== PlayerTypesEnum.BLUE} className="badge rounded-pill bg-dark text-light">Your turn</div>
+												<div hidden={currentPlayer !== PlayerTypesEnum.BLUE} className="badge rounded-pill bg-dark text-light">player's turn</div>
 											</div>
 										</div>
 									</div>
