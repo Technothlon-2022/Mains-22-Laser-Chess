@@ -14,7 +14,7 @@ background-position-y: -5px;
      font-size: 50px;
 }
 p{
-    margin: 10px;
+    margin-left: 10px;
 }
 .padding200{
     padding-left: 50px;
@@ -42,6 +42,12 @@ p{
     flex-direction:column ;
 
   
+}
+.div210{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;  
 }
 .div200{
     display: flex;
@@ -96,10 +102,11 @@ p{
     margin-top: 40px;
     font-size: 50px;
 }
+
 .button200{
    
 
-    width: 150%;
+    width: 120%;
 
     height: 70px;
     background-color:rgb(9, 9, 216);
