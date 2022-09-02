@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3022facc.css",
+    "main.js": "/static/js/main.e113183e.js",
+    "static/media/31.jpg": "/static/media/31.077fec4a3f17960ed36f.jpg",
+    "static/media/211.png": "/static/media/211.4ea17caaca21a92572cd.png",
+    "static/media/image 1.png": "/static/media/image 1.99c750276154fca98089.png",
+    "static/media/GEET.png": "/static/media/GEET.dcaf697117729323877e.png",
+    "static/media/122.png": "/static/media/122.7d6df4298a53f509b29c.png",
+    "static/media/logo.png": "/static/media/logo.717b050c9f4c4535c406.png",
+    "static/media/blue-player-profile.png": "/static/media/blue-player-profile.8c7fe1e58bbf99f9c597.png",
+    "static/media/red-player-profile.png": "/static/media/red-player-profile.01c666afde3fbe3235fc.png",
+    "static/media/special-move-highlight.svg": "/static/media/special-move-highlight.b5e223c8bc0a2e9c057eea8b21c03a77.svg",
+    "index.html": "/index.html",
+    "static/media/blue-laser-cell.svg": "/static/media/blue-laser-cell.3a8fe46925d464428a9d2c5924031a88.svg",
+    "static/media/red-laser-cell.svg": "/static/media/red-laser-cell.16d5a374a459ec6763eafbdb8051d717.svg",
+    "static/media/blue-reserved-cell.svg": "/static/media/blue-reserved-cell.5041145258b374bc328b4c3a61eb6021.svg",
+    "static/media/red-reserved-cell.svg": "/static/media/red-reserved-cell.7ec802e13792f29c0d786d64111b4980.svg",
+    "static/media/normal-move-highlight.svg": "/static/media/normal-move-highlight.a30750e44b3b00c2b3ff56368b46f6bf.svg",
+    "main.3022facc.css.map": "/static/css/main.3022facc.css.map",
+    "main.e113183e.js.map": "/static/js/main.e113183e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3022facc.css",
+    "static/js/main.e113183e.js"
+  ]
+}
