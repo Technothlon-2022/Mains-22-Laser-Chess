@@ -6,14 +6,14 @@ const socket = io("http://localhost:5050");
 const useSocket = ({ userDetails }) => {
 	const [incomingMsg, setIncomingMsg] = useState("");
 	const [outgoingMsg, setOutgoingMsg] = useState("");
-	const [isPlayerJoined, setIsPlayerJoined] = useState("");
+	const [roomNo, setRoomNo] = useState("");
 
 	useEffect(() => {
 		socket.on("connection");
 		socket.emit("new-user-joined", userDetails.roll);
 		socket.emit("user-joined", userDetails.roll);
 		socket.on("move", setIncomingMsg);
-		socket.on("user-joined", setIsPlayerJoined);
+		socket.on("user-joined", setRoomNo);
 
 		// socket.emit("message", outgoingMsg)
 		return () => socket.off("connection");
@@ -29,7 +29,7 @@ const useSocket = ({ userDetails }) => {
 	//     console.log(incomingMsg, userDetails.roll);
 	// }, [incomingMsg])
 
-	return [isPlayerJoined, incomingMsg, setOutgoingMsg];
+	return [roomNo, incomingMsg, setOutgoingMsg];
 };
 
 const sendMessage = (upd) => {

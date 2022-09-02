@@ -56,13 +56,17 @@
       <button class="btn" type="submit" onclick="sendWinner()">Send Winner</button>
       <h2></h2>
       <h3></h3>
-      <div></div>
+      <div class="container"></div>
     <script>
         const socket= io("http://localhost:5050");
         socket.on('connection')
+        const append = (message)=>{
+        const messageElement = document.createElement('div');
+        messageElement.innerText= message;
+        messageContainer.append(messageElement);
+        }
         const roll= prompt('Enter Your Roll no. to join');
         socket.emit('new-user-joined',roll);
-        socket.emit('user-joined',roll);
         socket.on('message',(data)=>{
             document.querySelector('h2').innerHTML=data
         })
@@ -70,7 +74,7 @@
             document.querySelector('h3').innerHTML=data
         })
         socket.on('user-joined',roll=>{
-            document.querySelector('div').innerHTML=`${roll} joined the room`
+        append(`${roll}`)
         })
         const sendMessage=()=>{
             const messageInput=document.querySelector('.message')

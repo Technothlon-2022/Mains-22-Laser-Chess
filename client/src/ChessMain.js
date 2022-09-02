@@ -22,7 +22,7 @@ function ChessMain() {
 
 	// Get user corresponding details
 	const userDetails = useOutletContext();
-	const [isPlayerJoined, incomingMsg, setOutgoingMsg] = useSocket(userDetails);
+	const [roomNo, incomingMsg, setOutgoingMsg] = useSocket(userDetails);
 
 	// The stage width. This is dynamic, and changes on window resize.
 	const [stageWidth, setStageWidth] = useState(700);
@@ -162,8 +162,8 @@ function ChessMain() {
 			</nav>
 
 			<div className="container section mt-4">
-				{isPlayerJoined || <div style={{width: "100vw", height: "100vh", position:"absolute", background: "rgba(255,255,255,0.8)", left: 0, top:0, zIndex: 1, textAlign: "center", fontSize: "80px"}}>
-					Please wait..., until player joins...
+				{roomNo > 1 || <div style={{width: "100vw", height: "100vh", position:"absolute", background: "rgba(255,255,255,0.8)", left: 0, top:0, zIndex: 1, textAlign: "center", fontSize: "80px", paddingTop: "200px"}}>
+					Please wait..., <br/> until your opponent joins...
 				</div>}
 
 				{winner && <h4>🎉 {winner.toUpperCase()} player wins!</h4>}

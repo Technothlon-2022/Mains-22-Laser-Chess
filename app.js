@@ -44,7 +44,7 @@ io.on("connection", (socket) => {
 		socket.join(room);
 		roomSize = io.sockets.adapter.rooms.get(room).size;
 		console.log(room + ":" + roomSize);
-		io.to(room).emit("user-joined", roll);
+		io.to(room).emit("user-joined", roomSize);
 		socket.on("message", (data) => {
 			console.log(users[socket.id] + ": " + data);
 			io.to(room).emit("message", data);
